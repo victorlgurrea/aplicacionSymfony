@@ -42,4 +42,19 @@ class DefaultController extends Controller
       // replace this example code with whatever you need
       return $this->render('default/bares.html.twig',array("sitio"=>$sitio));
     }
+
+    /**
+     * @Route("/tapa/{id}", name="tapa")
+     */
+    public function tapaAction(Request $request,$id=null)
+    {
+      //Captura del repositorio de la tabla Tapa contra la BD
+      //$repository = $this->getDoctrine()->getRepository(Tapa::class);
+      // encuentra la tapa con id que le hemos pasado;
+      //$tapa = $repository->find($id);
+      //le pasamos a la vista la tapa
+      return $this->render('default/tapa.html.twig');
+    }
+
+
 }

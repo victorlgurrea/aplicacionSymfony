@@ -1,0 +1,90 @@
+{# Plantilla base de la aplicación#}
+{% extends 'base.html.twig' %}
+{% block title %}Nuestro equipo{% endblock %}
+{% block body %}
+
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Bar de Víctor</h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{ path('homepage') }}">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Nosotros</li>
+    </ol>
+
+    <!-- Image Header -->
+    <img class="img-fluid rounded mb-4" src="{{asset('img/nosotros.png')}}" alt="cocineros.jpg">
+
+
+    <!-- Team Members -->
+  <h1 class="my-4">Nuestro equipo</h1>
+
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100 text-center">
+        <img class="card-img-top" src="{{ asset('img/usuario.jpg') }}" alt="">
+        <div class="card-body">
+          <h4 class="card-title">Nombre Director</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Director</h6>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#">name@example.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100 text-center">
+        <img class="card-img-top" src="{{ asset('img/usuario.jpg') }}" alt="">
+        <div class="card-body">
+          <h4 class="card-title">Nombre Chef</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Chef</h6>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#">name@example.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100 text-center">
+        <img class="card-img-top" src="{{ asset('img/usuario.jpg') }}" alt="">
+        <div class="card-body">
+          <h4 class="card-title">Nombre Metre</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Metre</h6>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#">name@example.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+  <h1 class="my-4">Nuestros clientes</h1>
+<div class="row">
+  <div class="col-lg-2 col-sm-4 mb-4">
+    <img class="img-fluid" src="{{ asset('img/cliente1.jpg') }}" alt="">
+  </div>
+  <div class="col-lg-2 col-sm-4 mb-4">
+    <img class="img-fluid" src="{{ asset('img/cliente2.jpg') }}" alt="">
+  </div>
+  <div class="col-lg-2 col-sm-4 mb-4">
+    <img class="img-fluid" src="{{ asset('img/cliente3.jpg') }}" alt="">
+  </div>
+  <div class="col-lg-2 col-sm-4 mb-4">
+    <img class="img-fluid" src="{{ asset('img/cliente2.jpg') }}" alt="">
+  </div>
+  <div class="col-lg-2 col-sm-4 mb-4">
+    <img class="img-fluid" src="{{ asset('img/cliente1.jpg') }}" alt="">
+  </div>
+  <div class="col-lg-2 col-sm-4 mb-4">
+    <img class="img-fluid" src="{{ asset('img/cliente3.jpg') }}" alt="">
+  </div>
+</div>
+</div>
+{% endblock %}

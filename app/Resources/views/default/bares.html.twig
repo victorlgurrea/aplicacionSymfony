@@ -1,0 +1,125 @@
+{# Plantilla base de la aplicación#}
+{% extends 'base.html.twig' %}
+{% block title %}Bares{% endblock %}
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Bares</h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{ path('homepage') }}">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Bares</li>
+    </ol>
+
+<!-- Bar Valencia -->
+{% if sitio=="vlc" or sitio=="todos" %}
+    <!-- Content Row -->
+  <div class="row">
+    <!-- Map Column -->
+    <div class="col-lg-8 mb-4">
+      <!-- Embedded Google Map -->
+
+      <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12319.245553329329!2d-0.3789726!3d39.4735895!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1243035689245d8d!2sMercado+Central+de+Valencia!5e0!3m2!1ses!2ses!4v1521830396780&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+    </div>
+    <!-- Contact Details Column -->
+    <div class="col-lg-4 mb-4">
+      <h3>Detalles</h3>
+      <p>
+        Plaça de la Ciutat de Bruges, s/n,
+        <br>46001 València
+        <br>
+      </p>
+      <p>
+        <abbr title="Phone">Telefono</abbr>: 963 82 91 00
+      </p>
+      <p>
+        <abbr title="Email">Email</abbr>:
+        <a href="mailto:name@example.com">name@example.com
+        </a>
+      </p>
+      <p>
+        <abbr title="Hours">Horario</abbr>: Lunes - Sábado : 7:00 AM to 15:00 PM
+      </p>
+    </div>
+  </div>
+  <!-- /.row -->
+{% endif %}
+<!-- Fin Bar Valencia -->
+
+<!-- Bar Barcelona -->
+{% if sitio=="bcn" or sitio=="todos" %}
+<!-- Content Row -->
+<div class="row">
+<!-- Map Column -->
+<div class="col-lg-8 mb-4">
+  <!-- Embedded Google Map -->
+
+  <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11974.590509541926!2d2.1715853!3d41.3817399!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x860ac654dc73add5!2sMercado+de+La+Boqueria!5e0!3m2!1ses!2ses!4v1521832608769&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+</div>
+<!-- Contact Details Column -->
+<div class="col-lg-4 mb-4">
+  <h3>Detalles</h3>
+  <p>
+     La Rambla, 91,
+    <br>08001 Barcelona
+    <br>
+  </p>
+  <p>
+    <abbr title="Phone">Telefono</abbr>: 933 18 25 84
+  </p>
+  <p>
+    <abbr title="Email">Email</abbr>:
+    <a href="mailto:name@example.com">name@example.com
+    </a>
+  </p>
+  <p>
+    <abbr title="Hours">Horario</abbr>: Lunes - Sábado : 8:00 AM to 20:30 PM
+  </p>
+</div>
+</div>
+<!-- /.row -->
+{% endif %}
+<!-- Fin Bar Barcelona -->
+
+
+<!-- Bar Madrid -->
+{% if sitio=="mdr" or sitio=="todos" %}
+<!-- Content Row -->
+<div class="row">
+<!-- Map Column -->
+<div class="col-lg-8 mb-4">
+  <!-- Embedded Google Map -->
+
+  <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12150.813358881282!2d-3.709022!3d40.4154223!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x162fe6d34dd190e8!2sMercado+de+San+Miguel!5e0!3m2!1ses!2ses!4v1521833234500&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+</div>
+<!-- Contact Details Column -->
+<div class="col-lg-4 mb-4">
+  <h3>Detalles</h3>
+  <p>
+     Plaza de San Miguel, s/n,
+    <br>28005 Madrid
+    <br>
+  </p>
+  <p>
+    <abbr title="Phone">Telefono</abbr>: 915 42 49 36
+  </p>
+  <p>
+    <abbr title="Email">Email</abbr>:
+    <a href="mailto:name@example.com">name@example.com
+    </a>
+  </p>
+  <p>
+    <abbr title="Hours">Horario</abbr>: Lunes - Sábado : 10:00 AM to 24:00 PM
+  </p>
+</div>
+</div>
+<!-- /.row -->
+{% endif %}
+<!-- Fin Bar Madrid -->
+
+   </div>
+{% endblock %}

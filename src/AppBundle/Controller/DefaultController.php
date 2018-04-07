@@ -48,12 +48,18 @@ class DefaultController extends Controller
      */
     public function tapaAction(Request $request,$id=null)
     {
-      //Captura del repositorio de la tabla Tapa contra la BD
-      //$repository = $this->getDoctrine()->getRepository(Tapa::class);
-      // encuentra la tapa con id que le hemos pasado;
-      //$tapa = $repository->find($id);
-      //le pasamos a la vista la tapa
-      return $this->render('default/tapa.html.twig');
+      if($id!=null){
+        //Captura del repositorio de la tabla Tapa contra la BD
+        $tapaRepository = $this->getDoctrine()->getRepository(Tapa::class);
+        // encuentra la tapa con id que le hemos pasado;
+        $tapa = $tapaRepository->find($id);
+        //Ahora le pasamos la tapa a la vista
+        return $this->render('default/tapa.html.twig',array("tapa"=>$tapa));
+      }else{
+        // redirects to the "homepage" route
+        return $this->redirectToRoute('homepage');
+      }
+
     }
 
 

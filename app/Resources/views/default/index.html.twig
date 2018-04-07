@@ -56,11 +56,11 @@
 
   <div class="col-lg-4 col-sm-6 portfolio-item">
     <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="{{ asset('img/tapas/'~tapa.foto) }}" alt="{{tapa.nombre}}">
+      <a href="{{path('tapa',{'id':tapa.id})}}"><img class="card-img-top" src="{{ asset('img/tapas/'~tapa.foto) }}" alt="{{tapa.nombre}}">
       </a>
       <div class="card-body">
         <h4 class="card-title">
-          <a href="#">{{ tapa.nombre }}</a>
+          <a href="{{path('tapa',{'id':tapa.id})}}">{{ tapa.nombre }}</a>
         </h4>
         <p class="card-text">{{  tapa.descripcion }}</p>
       </div>

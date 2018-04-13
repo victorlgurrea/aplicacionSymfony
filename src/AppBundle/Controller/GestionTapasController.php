@@ -17,15 +17,14 @@ class GestionTapasController extends Controller
    */
   public function nuevaTapaAction(Request $request)
   {
-      //Captura del repositorio de la tabla Tapa contra la BD
-      $tapaRepository = $this->getDoctrine()->getRepository(Tapa::class);
-      //Si quisieramos recuperar todas las tapas utilizar $tapaRepository->findAll()
-      // encuentra todas las tapas con Top=1;
-      $tapas = $tapaRepository->findAll();
-      //var_dump($tapas); vemos que recogemos todas las tapas mostrandolas
-
+      //Vamos a crear una nueva tapa
+      $tapa = new Tapa();
+      // le pasamos el objeto tapa al creador de formularios quien con la ayuda de entity Tapa sabe los campos que necesita
+      $formBuilder = $this->createFormBuilder($tapa);
+      // el formulario se construye con la ayuda de la funcion getForm()
+      $form = $formBuilder->getForm();
       // replace this example code with whatever you need
-      return $this->render('default/index.html.twig',array('tapas'=>$tapas));
+      return $this->render('gestionTapas/nuevaTapa.html.twig', array('form' => $form->createView(),));
   }
 
 }

@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TapaType extends AbstractType
 {
+    //el submit va a enviar los datos al mismo action del mismo controller que proviene osea
+    //en GestionTapasController a nuevaTapaAction
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

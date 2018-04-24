@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 class TapaType extends AbstractType
@@ -20,6 +21,7 @@ class TapaType extends AbstractType
         ->add('nombre', TextType::class)
         ->add('descripcion', CKEditorType::class)
         ->add('ingredientes', TextareaType::class)
+        ->add('foto', FileType::class,array('attr'=>array('onchange'=>'onChange(event)')))
         ->add('top')
         ->add('save', SubmitType::class, array('label' => 'Nueva Tapa'))
         ;

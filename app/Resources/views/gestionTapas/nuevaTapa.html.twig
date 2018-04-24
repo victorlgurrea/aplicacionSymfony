@@ -13,7 +13,12 @@
        {{ form_start(form) }}
        {{ form_widget(form)}}
        {{ form_end(form) }}
+       <br>
       </div>
     </div>
 </div>
+
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="{{asset('js/nuevaImgTapa.js')}}">
 {% endblock %}

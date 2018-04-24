@@ -33,9 +33,7 @@ class GestionTapasController extends Controller
       if ($form->isSubmitted() && $form->isValid()) {
       //rellenamos el entity tapa
       $tapa = $form->getData();
-      $tapa->setIngredientes("");
       $tapa->setFoto("");
-      $tapa->setTop(0);
       $tapa->setFechaCreacion(new \DateTime());
       //almacenar nueva tapa
        $em = $this->getDoctrine()->getManager();

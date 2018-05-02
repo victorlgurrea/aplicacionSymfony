@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Tapa;
+use AppBundle\Entity\Categoria;
 
 class DefaultController extends Controller
 {
@@ -62,5 +63,23 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * @Route("/categoria/{id}", name="categoria")
+     */
+    public function categoriaAction(Request $request,$id=null)
+    {
+      if($id!=null){
+        //Captura del repositorio de la tabla Categoria contra la BD
+        $categoriaRepository = $this->getDoctrine()->getRepository(Categoria::class);
+        // encuentra la categoria con id que le hemos pasado;
+        $categoria = $categoriaRepository->find($id);
+        //Ahora le pasamos la categoria a la vista
+        return $this->render('default/categoria.html.twig',array("categoria"=>$categoria));
+      }else{
+        // redirects to the "homepage" route
+        return $this->redirectToRoute('homepage');
+      }
+
+    }
 
 }

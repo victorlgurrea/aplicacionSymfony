@@ -56,7 +56,7 @@
 
   <div class="col-lg-4 col-sm-6 portfolio-item">
     <div class="card h-100">
-      <a href="{{path('tapa',{'id':tapa.id})}}"><img class="card-img-top" src="{{ asset('img/tapas/'~tapa.foto) }}" alt="{{tapa.nombre}}">
+      <a href="{{path('tapa',{'id':tapa.id})}}"><img class="card-img-top" src={% if tapa.foto|length >0 %}"{{ asset('img/tapas/' ~tapa.foto) }}"{% else %}"http://placehold.it/700x400"{% endif %} alt="{{tapa.nombre}}">
       </a>
       <div class="card-body">
         <h4 class="card-title">

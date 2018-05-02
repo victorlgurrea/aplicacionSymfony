@@ -1,0 +1,24 @@
+{# Plantilla base de la aplicación#}
+{% extends 'base.html.twig' %}
+{% form_theme form 'form/tapaForm.html.twig' %}
+{# Titulo #}
+{% block title %}nueva Categoria{% endblock %}
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+  <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Nueva Categoria</h1>
+    <div class="row">
+      <div class="col-md-8">
+       {{ form_start(form) }}
+       {{ form_widget(form)}}
+       {{ form_end(form) }}
+       <br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="{{asset('js/nuevaImgTapa.js')}}">
+{% endblock %}

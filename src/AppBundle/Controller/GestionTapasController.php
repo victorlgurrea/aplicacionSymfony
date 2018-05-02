@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Tapa;
 use AppBundle\Form\TapaType;
-
+use AppBundle\Entity\Categoria;
+use AppBundle\Form\CategoriaType;
 
 /**
  * @Route("/gestionTapas")
@@ -34,7 +35,7 @@ class GestionTapasController extends Controller
       //rellenamos el entity tapa
       $tapa = $form->getData();
       $fotoFile=$tapa->getFoto();
-      $fileName = $this->generateUniqueFileName().'.'.$fotoFile->guessExtension();
+      $fileName =$this->generateUniqueFileName().'.'.$fotoFile->guessExtension();
       // moves the file to the directory where brochures are stored
       $fotoFile->move(
           $this->getParameter('tapas_directory'),
@@ -53,6 +54,45 @@ class GestionTapasController extends Controller
       // replace this example code with whatever you need
       return $this->render('gestionTapas/nuevaTapa.html.twig', array('form' => $form->createView(),));
   }
+
+
+  /**
+   * @Route("/nuevaCategoria", name="nuevaCategoria")
+   */
+  public function nuevaCatAction(Request $request)
+  {
+    //Vamos a crear una nueva categoria
+    $categoria = new Categoria();
+    // creamos el fomulario
+    $form = $this->createForm(CategoriaType::class, $categoria);
+    //recogemos la información del submit
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+    //rellenamos el entity tapa
+    $categoria = $form->getData();
+    $fotoFile=$categoria->getFoto();
+    $fileName =$this->generateUniqueFileName().'.'.$fotoFile->guessExtension();
+    // moves the file to the directory where brochures are stored
+    $fotoFile->move(
+        $this->getParameter('tapas_directory'),
+        $fileName
+    );
+
+    $categoria->setFoto($fileName);
+
+     //almacenar nueva tapa
+     $em = $this->getDoctrine()->getManager();
+     $em->persist($categoria);
+     $em->flush();
+
+     return $this->redirectToRoute('categoria',array('id'=>$categoria->getId()));
+     }
+    // replace this example code with whatever you need
+    return $this->render('gestionTapas/nuevaCategoria.html.twig', array('form' => $form->createView(),));
+
+
+ }
+
   /**
    * @return string
   */

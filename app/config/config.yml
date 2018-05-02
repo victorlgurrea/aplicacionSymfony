@@ -9,6 +9,7 @@ parameters:
     locale: en
     tapas_directory: '%kernel.project_dir%/web/img/tapas'
 
+
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
@@ -36,6 +37,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+      tapas: '/img/tapas/'
 
 # Doctrine Configuration
 doctrine:

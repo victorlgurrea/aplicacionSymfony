@@ -38,7 +38,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-      tapas: '/img/tapas/'
+      tapasImg: 'img/tapas/'
 
 # Doctrine Configuration
 doctrine:

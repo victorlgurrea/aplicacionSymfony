@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Tapa;
 use AppBundle\Form\TapaType;
 use AppBundle\Entity\Categoria;
+use AppBundle\Entity\Ingrediente;
+use AppBundle\Form\IngredienteType;
 use AppBundle\Form\CategoriaType;
 
 /**
@@ -92,6 +94,34 @@ class GestionTapasController extends Controller
 
 
  }
+
+ /**
+  * @Route("/nuevoIngrediente", name="nuevaIngrediente")
+  */
+ public function nuevaIngAction(Request $request)
+ {
+   //Vamos a crear un nuevo ingrediente
+   $ingrediente = new Ingrediente();
+   // creamos el fomulario
+   $form = $this->createForm(IngredienteType::class, $ingrediente);
+   //recogemos la información del submit
+   $form->handleRequest($request);
+   if ($form->isSubmitted() && $form->isValid()) {
+   //rellenamos el entity tapa
+   $ingrediente = $form->getData();
+
+    //almacenar nuevo ingrediente
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($ingrediente);
+    $em->flush();
+
+    return $this->redirectToRoute('ingrediente',array('id'=>$ingrediente->getId()));
+    }
+   // replace this example code with whatever you need
+   return $this->render('gestionTapas/nuevoIngrediente.html.twig', array('form' => $form->createView(),));
+
+
+}
 
   /**
    * @return string

@@ -1,0 +1,27 @@
+{# Plantilla base de la aplicación#}
+{% extends 'base.html.twig' %}
+{% block title %}Tapa{% endblock %}
+{% block body %}
+
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Nuestros mejores ingredientes : </h1>
+
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+
+      <div class="col-md-4">
+        <h3 class="my-3">{{ingrediente.nombre}}</h3>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+{% endblock %}

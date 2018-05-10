@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Tapa;
 use AppBundle\Entity\Categoria;
+use AppBundle\Entity\Ingrediente;
 
 class DefaultController extends Controller
 {
@@ -75,6 +76,25 @@ class DefaultController extends Controller
         $categoria = $categoriaRepository->find($id);
         //Ahora le pasamos la categoria a la vista
         return $this->render('default/categoria.html.twig',array("categoria"=>$categoria));
+      }else{
+        // redirects to the "homepage" route
+        return $this->redirectToRoute('homepage');
+      }
+
+    }
+
+    /**
+     * @Route("/ingrediente/{id}", name="ingrediente")
+     */
+    public function ingredienteAction(Request $request,$id=null)
+    {
+      if($id!=null){
+        //Captura del repositorio de la tabla Categoria contra la BD
+        $ingredienteRepository = $this->getDoctrine()->getRepository(Ingrediente::class);
+        // encuentra la categoria con id que le hemos pasado;
+        $ingrediente = $ingredienteRepository->find($id);
+        //Ahora le pasamos la categoria a la vista
+        return $this->render('default/ingrediente.html.twig',array("ingrediente"=>$ingrediente));
       }else{
         // redirects to the "homepage" route
         return $this->redirectToRoute('homepage');

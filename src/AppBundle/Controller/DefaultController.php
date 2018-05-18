@@ -12,10 +12,11 @@ use AppBundle\Entity\Ingrediente;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/{pagina}", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request,$pagina=1)
     {
+         $numTapas=3;
         //Captura del repositorio de la tabla Tapa contra la BD
         $tapaRepository = $this->getDoctrine()->getRepository(Tapa::class);
         //Si quisieramos recuperar todas las tapas utilizar $tapaRepository->findAll()
@@ -24,12 +25,12 @@ class DefaultController extends Controller
         //var_dump($tapas); vemos que recogemos todas las tapas mostrandolas
         $query = $tapaRepository->createQueryBuilder('t')
           ->where('t.top= 1')
-          ->setFirstResult(0)
-          ->setMaxResults(100)
+          ->setFirstResult($numTapas*($pagina-1))
+          ->setMaxResults($numTapas)
           ->getQuery();
         $tapas = $query->getResult();
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig',array('tapas'=>$tapas));
+        return $this->render('default/index.html.twig',array('tapas'=>$tapas,'paginaActual'=>$pagina));
     }
 
     /**

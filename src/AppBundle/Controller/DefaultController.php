@@ -16,19 +16,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request,$pagina=1)
     {
-         $numTapas=3;
         //Captura del repositorio de la tabla Tapa contra la BD
         $tapaRepository = $this->getDoctrine()->getRepository(Tapa::class);
-        //Si quisieramos recuperar todas las tapas utilizar $tapaRepository->findAll()
-        // encuentra todas las tapas con Top=1;
-        //$tapas = $tapaRepository->findByTop(1);
-        //var_dump($tapas); vemos que recogemos todas las tapas mostrandolas
-        $query = $tapaRepository->createQueryBuilder('t')
-          ->where('t.top= 1')
-          ->setFirstResult($numTapas*($pagina-1))
-          ->setMaxResults($numTapas)
-          ->getQuery();
-        $tapas = $query->getResult();
+         $tapas = $tapaRepository->paginaTapas($pagina,3);
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig',array('tapas'=>$tapas,'paginaActual'=>$pagina));
     }

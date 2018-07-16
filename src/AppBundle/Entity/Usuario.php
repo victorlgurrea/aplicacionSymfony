@@ -28,6 +28,12 @@ class Usuario implements UserInterface, \Serializable
       private $username;
 
       /**
+       * @Assert\NotBlank()
+       * @Assert\Length(max=4096)
+       */
+      private $plainPassword;
+
+      /**
        * @ORM\Column(type="string", length=64)
        */
       private $password;
@@ -48,10 +54,22 @@ class Usuario implements UserInterface, \Serializable
           // may not be needed, see section on salt below
           // $this->salt = md5(uniqid('', true));
       }
+      public function setUsername($username)
+      {
+          return $this->username=$username;
+      }
+
 
       public function getUsername()
       {
           return $this->username;
+      }
+      public function setEmail($email)
+      {
+          return $this->email=$email;
+      }      public function getEmail()
+      {
+          return $this->email;
       }
 
       public function getSalt()
@@ -60,6 +78,17 @@ class Usuario implements UserInterface, \Serializable
           // see section on salt below
           return null;
       }
+
+      public function getPlainPassword()
+      {
+          return $this->plainPassword;
+      }
+
+      public function setPlainPassword($password)
+      {
+          $this->plainPassword = $password;
+      }
+
 
       public function getPassword()
       {

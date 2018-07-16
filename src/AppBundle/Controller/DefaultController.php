@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use AppBundle\Entity\Tapa;
 use AppBundle\Entity\Categoria;
 use AppBundle\Entity\Ingrediente;
@@ -98,4 +99,34 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * @Route("/registro", name="registro")
+     */
+    public function registroAction(Request $request)
+    {
+
+        //Vamos a crear un nuevo usuario
+        $usuario = new Usuario();
+        // le pasamos el objeto tapa al creador de formularios quien con la ayuda de Form/UsuarioType hemos descrito como construir el formulario
+        // creamos el fomulario
+        $form = $this->createForm(UsuarioType::class, $usuario);
+        //recogemos la información del submit
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+          // 3) Encode the password (you could also do this via Doctrine listener)
+          $password = $passwordEncoder->encodePassword($usuario, $usuario->getPlainPassword());
+          $usuario->setPassword($password);
+          // 3.b)
+          $usuario->setUsername($usuario->getEmail());
+
+          // 4) save the User!
+          $entityManager = $this->getDoctrine()->getManager();
+          $entityManager->persist($usuario);
+          $entityManager->flush();
+
+         return $this->redirectToRoute('tapa',array('id'=>$tapa->getId()));
+         }
+        // replace this example code with whatever you need
+        return $this->render('gestionTapas/nuevaTapa.html.twig', array('form' => $form->createView(),));
+    }
 }

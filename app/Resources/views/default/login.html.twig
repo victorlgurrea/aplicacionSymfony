@@ -1,0 +1,40 @@
+{# Plantilla base de la aplicación#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+{% block body %}
+<!-- Page Content -->
+
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">Bar Victor<br>
+    <small>Registro nuevo usuario</small>
+  </h1>
+  <!-- Intro Content -->
+  <div class="row">
+    <div class="col-lg-6">
+
+    <form action="{{ path('login') }}" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="_username" value="" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+    </div>
+        <button type="submit">login</button>
+    </form>
+    </div>
+    <div class="col-lg-6">
+      <h2>¿Para qué registrarse?</h2>
+      <p>Con el registro de usuario podrá realizar reservas en nuestros restaurantes de forma rápaida y sencilla.</p>
+      <p>Mediante el registro del correo electrónico usted podrá realizar reservas o cancelarlas.</p>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<br><br>
+{% endblock %}

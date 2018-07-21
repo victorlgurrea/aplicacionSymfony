@@ -6,9 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 use AppBundle\Entity\Tapa;
 use AppBundle\Entity\Categoria;
 use AppBundle\Entity\Ingrediente;
+use AppBundle\Entity\Usuario;
+use AppBundle\Form\UsuarioType;
+
 
 class DefaultController extends Controller
 {
@@ -25,7 +29,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/nosotros", name="nosotros")
+     * @Route("/nosotros/", name="nosotros")
      */
     public function nosotrosAction(Request $request)
     {
@@ -100,9 +104,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/registro", name="registro")
+     * @Route("/registro/", name="registro")
      */
-    public function registroAction(Request $request)
+    public function registroAction(Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
 
         //Vamos a crear un nuevo usuario
@@ -124,9 +128,17 @@ class DefaultController extends Controller
           $entityManager->persist($usuario);
           $entityManager->flush();
 
-         return $this->redirectToRoute('tapa',array('id'=>$tapa->getId()));
+         return $this->redirectToRoute('login');
          }
         // replace this example code with whatever you need
-        return $this->render('gestionTapas/nuevaTapa.html.twig', array('form' => $form->createView(),));
+        return $this->render('default/registro.html.twig', array('form' => $form->createView()));
     }
-}
+
+    /**
+     * @Route("/login/", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+        return $this->render('default/login.html.twig');
+     }
+  }

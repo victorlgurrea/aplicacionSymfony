@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use AppBundle\Entity\Tapa;
 use AppBundle\Entity\Categoria;
 use AppBundle\Entity\Ingrediente;
@@ -137,8 +137,17 @@ class DefaultController extends Controller
     /**
      * @Route("/login/", name="login")
      */
-    public function loginAction(Request $request)
+    public function loginAction(Request $request,AuthenticationUtils $authenticationUtils)
     {
-        return $this->render('default/login.html.twig');
+      // get the login error if there is one
+         $error = $authenticationUtils->getLastAuthenticationError();
+
+     // last username entered by the user
+         $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('default/login.html.twig',array(
+        'last_username' => $lastUsername,
+        'error'         => $error,
+        ));
      }
   }

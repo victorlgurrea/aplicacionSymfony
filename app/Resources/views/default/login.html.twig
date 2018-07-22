@@ -1,7 +1,7 @@
 {# Plantilla base de la aplicación#}
 {% extends 'base.html.twig' %}
 
-{% block title %}Registro{% endblock %}
+{% block title %}Login{% endblock %}
 {% block body %}
 <!-- Page Content -->
 
@@ -9,28 +9,37 @@
 
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">Bar Victor<br>
-    <small>Registro nuevo usuario</small>
+    <small>login usuario</small>
   </h1>
   <!-- Intro Content -->
   <div class="row">
     <div class="col-lg-6">
 
+    {% if error %}
+        <div class="alert alert-danger" ><h4>{{ error.messageKey|trans(error.messageData, 'security') }}</h4></div>
+    {% endif %}
+
     <form action="{{ path('login') }}" method="post">
-    <div>
+    <div class="control-group form-group">
+     <div class="controls">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="" />
-    </div>
-    <div>
+        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"  />
+        </div>
+       </div>
+       <div class="control-group form-group">
+        <div class="controls">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
-    </div>
-        <button type="submit">login</button>
+        <input class="form-control" type="password" id="password" name="_password" />
+        </div>
+       </div>
+        <button class="btn btn-primary"  type="submit">login</button>
     </form>
     </div>
     <div class="col-lg-6">
       <h2>¿Para qué registrarse?</h2>
       <p>Con el registro de usuario podrá realizar reservas en nuestros restaurantes de forma rápaida y sencilla.</p>
       <p>Mediante el registro del correo electrónico usted podrá realizar reservas o cancelarlas.</p>
+      <p>Si no te has registrado todavía , pincha en el siguiente enlace <a href="{{ path('registro')  }}">registrarse</a></p>
     </div>
   </div>
   <!-- /.row -->
